@@ -1,3 +1,4 @@
+
 const MovieCard = ({
   posterImage,
   favorite,
@@ -9,6 +10,7 @@ const MovieCard = ({
   isTVSeries,
 }) => {
   return (
+    
     <div data-testid="" className="flex flex-col items-start justify-start gap-[12px] text-left text-xs text-gray-900 font-dm-sans">
       <div className="relative w-[250px] h-[370px]">
         <img
@@ -54,6 +56,7 @@ const MovieCard = ({
       </div>
       <b className="relative text-gray-400">{genre}</b>
     </div>
+  
   );
 };
 

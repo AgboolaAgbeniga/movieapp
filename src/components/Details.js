@@ -38,22 +38,7 @@ const Details = () => {
           <p className="m-0">{movieDetails.overview}</p>
         </div>
       </div>
-      {/* <div className="self-stretch relative h-[183px] text-xl text-darkslategray-200"> */}
-        {/* Images and other details */}
-        {/* <div className="absolute top-[16px] left-[6px]">
-          <span>Director :</span>
-          <span className="text-white">{` `}</span>
-          <span className="text-crimson-100">{movieDetails.director}</span>
-        </div> */}
-        {/* <div className="absolute top-[77px] left-[6px]">
-          <span>{`Writers :  `}</span>
-          <span className="text-crimson-100">{movieDetails.writers}</span>
-        </div>
-        <div className="absolute top-[138px] left-[6px]">
-          <span>{`Stars : `}</span>
-          <span className="text-crimson-100">{movieDetails.stars}</span>
-        </div> */}
-      {/* </div> */}
+      
     </div>
   );
 };

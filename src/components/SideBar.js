@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 const SideBar = () => {
   return (
-    <div className="absolute h-full w-[14.95%] top-[0%] right-[85.05%] bottom-[0%] left-[0%] rounded-tl-none rounded-tr-26xl rounded-br-26xl rounded-bl-none bg-white box-border flex flex-col py-[52px] px-0 items-center justify-start gap-[60px] text-left text-xl text-dimgray font-poppins border-[1px] border-solid border-gray-600">
+    <div className="hidden md:block absolute h-full w-1/5 top-0 left-0 bg-white flex flex-col py-12 px-4 items-center justify-start text-xl text-dimgray font-poppins border-r border-gray-600">
       <div className="relative w-[226px] h-[499px] overflow-hidden shrink-0">
         <div className="absolute h-[10.02%] w-[82.3%] top-[0%] right-[8.85%] bottom-[89.98%] left-[8.85%] flex flex-row items-center justify-start gap-[24px] text-5xl text-darkslategray-200 font-dm-sans">
           <img
@@ -13,7 +15,7 @@ const SideBar = () => {
         <div className="absolute top-[155px] left-[42px] w-[142px] h-[30px] overflow-hidden">
           <div className="absolute h-full w-[71.13%] top-[0%] right-[28.87%] bottom-[0%] left-[0%]">
             <div className="absolute h-full w-[60.4%] top-[0%] left-[39.6%] font-semibold inline-block">
-              Home
+            <Link to={`/`}> Home</Link>
             </div>
             <img
               className="absolute top-[1px] left-[0px] w-[27px] h-[29px] object-cover"

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import MovieCard from './MovieCard'; // Import MovieCard component
 import { useMovieContext } from '../api/MovieContext';
+import { Link } from 'react-router-dom';
 
 const FeaturedMovie = () => {
   const movieData = useMovieContext(); // Access movie data from the context
@@ -24,24 +25,26 @@ const FeaturedMovie = () => {
         </div>
       </div>
       <div className="w-full h-full flex flex-col items-center justify-center">
-      <div className="absolute top-[91px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
-        {movieData.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            posterImage={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            favorite="/favorite.svg"
-            releaseDate={movie.release_date} // Use releaseDate instead of uSA2016Current
-            originalTitle={movie.original_title} // Use originalTitle instead of strangerThings
-            rating="86.0 / 100" // Use rating instead of prop
-            percentage="97%" // Use percentage instead of prop1
-            genre="Action, Adventure, Horror" // Use genre instead of actionAdventureHorror
-            isTVSeries={movie.isTVSeries} // Use isTVSeries instead of showTVSeries
-          />
-        ))}
+        <div className="absolute top-[91px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+          {movieData.map((movie) => (
+            <Link to={`/movies/${movie.id}`}>
+              <MovieCard
+                key={movie.id}
+                posterImage={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                favorite="/favorite.svg"
+                releaseDate={movie.release_date} // Use releaseDate instead of uSA2016Current
+                originalTitle={movie.original_title} // Use originalTitle instead of strangerThings
+                rating="86.0 / 100" // Use rating instead of prop
+                percentage="97%" // Use percentage instead of prop1
+                genre="Action, Adventure, Horror" // Use genre instead of actionAdventureHorror
+                isTVSeries={movie.isTVSeries} // Use isTVSeries instead of showTVSeries
+              />
+            </Link>
+          ))}
+        </div>
       </div>
-      </div>
-      
-    
+
+
       <img
         className="absolute top-[252px] left-[0px] w-12 h-12 overflow-hidden"
         alt=""
