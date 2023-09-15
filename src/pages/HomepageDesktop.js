@@ -8,7 +8,7 @@ import { MovieProvider } from "../api/MovieContext";
 const HomepageDesktop = () => {
   return (
     <MovieProvider>
-      <div className="relative bg-white w-full h-[2845px] overflow-hidden">
+      <div className="relative bg-white h-[2845px] overflow-hidden">
         <Header />
         <FeaturedMovie />
         {/* <NewArrival /> */}
