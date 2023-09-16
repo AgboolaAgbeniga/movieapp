@@ -27,15 +27,15 @@ const Details = () => {
     <div className="absolute top-[518px] left-[275px] w-[785.06px] flex flex-col items-center justify-center gap-[20px] text-left text-mini text-firebrick font-poppins">
       <div className="self-stretch relative h-[150px]">
         <div className="absolute top-[0px] left-[0px] text-4xl text-darkslategray-100">
-          <span className="text-xl font-medium">{movieDetails.title}</span>
+          <span data-testid="movie-title" className="text-xl font-medium">{movieDetails.title}</span>
           <span> • </span>
-          <span className="font-medium">{movieDetails.release_date}</span>
+          <span className="font-medium" data-testid="movie-release-date">{movieDetails.release_date}</span>
           <span> • </span>
-                  <span className="font-medium">{movieDetails.runtime} min</span>
+                  <span className="font-medium" >{movieDetails.runtime} min</span>
         </div>
         {/* Rest of your JSX */}
         <div className="absolute top-[60px] left-[0px] text-xl text-darkslategray-200">
-          <p className="m-0">{movieDetails.overview}</p>
+          <p className="m-0" data-testid="movie-overview">{movieDetails.overview}</p>
         </div>
       </div>
       

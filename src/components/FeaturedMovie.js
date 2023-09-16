@@ -44,12 +44,6 @@ const FeaturedMovie = () => {
         </div>
       </div>
 
-
-      <img
-        className="absolute top-[252px] left-[0px] w-12 h-12 overflow-hidden"
-        alt=""
-        src="../public/chevron-right1.svg"
-      />
     </div>
   );
 };
