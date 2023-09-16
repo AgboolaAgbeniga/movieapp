@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import ErrorPage from './ErrorPage'; // Import the error page component
 
 const BackDrop = () => {
   const { id } = useParams();
   const [videoKey, setVideoKey] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     // Fetch the movie videos using the movie ID
@@ -20,9 +22,15 @@ const BackDrop = () => {
       })
       .catch((error) => {
         console.error('Error fetching videos:', error);
+        setError('An error occurred while fetching the video.'); // Set the error message
         setIsLoading(false);
       });
   }, [id]);
+
+  if (error) {
+    // Display the error page if an error occurred
+    return <ErrorPage message={error} />;
+  }
   // relative h-0 overflow-hidden max-w-full w-full
   return (
     <div className="absolute left-[283px] max-w-full w-full md:w-4/5 aspect-w-16 aspect-h-16 rounded-xl py-[] box-border">
