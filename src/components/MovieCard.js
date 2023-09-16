@@ -11,7 +11,7 @@ const MovieCard = ({
 }) => {
   return (
     
-    <div data-testid="" className="flex flex-col items-start justify-start gap-[12px] text-left text-xs text-gray-900 font-dm-sans">
+    <div data-testid="movie-card" className="flex flex-col items-start justify-start gap-[12px] text-left text-xs text-gray-900 font-dm-sans">
       <div className="relative w-[250px] h-[370px]">
         <img
           className="absolute top-[0px] left-[0px] w-[250px] h-[370px] object-cover"
