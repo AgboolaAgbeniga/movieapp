@@ -4,8 +4,16 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import Movies1 from "./pages/Movies1";
+import MovieDetails from "./pages/MovieDetails";
 import HomepageDesktop from "./pages/HomepageDesktop";
+import TVShows from "./pages/TVShows";
+import TVShowDetails from "./pages/TVShowDetails";
+import PersonDetails from "./pages/PersonDetails";
+import Movies from "./pages/Movies";
+import Upcoming from "./pages/Upcoming";
+import GenreMovies from "./pages/GenreMovies";
+import SearchResults from "./pages/SearchResults";
+import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 
 function App() {
@@ -51,10 +59,18 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomepageDesktop />} />
-      <Route path="/movies" element={<Movies1 />} />
-      <Route path="/movies/:id" element={<Movies1 />} />
+      {/* <Route path="/movies" element={<Movies1 />} /> */}
+      <Route path="/movies/:id" element={<MovieDetails />} />
+      <Route path="/movies" element={<Movies />} />
+      <Route path="/upcoming" element={<Upcoming />} />
+      <Route path="/genre/:id" element={<GenreMovies />} />
+      <Route path="/search" element={<SearchResults />} />
+      <Route path="/tv" element={<TVShows />} />
+      <Route path="/tv/:id" element={<TVShowDetails />} />
+      <Route path="/person/:id" element={<PersonDetails />} />
+      <Route path="*" element={<NotFound />} />
 
-      
+
     </Routes>
   );
 }

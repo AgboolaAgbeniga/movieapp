@@ -3,12 +3,12 @@ import Modal from 'react-modal';
 import MovieCardResult from './MovieCardResult';
 import SearchFilters from './SearchFilters';
 import { Link } from 'react-router-dom';
-import { discoverMovies } from '../api/Api';
+import { discoverTVShows } from '../api/Api';
 import LoadingSkeleton from './LoadingSkeleton';
 
-Modal.setAppElement('#root'); // Set the root element for accessibility
+Modal.setAppElement('#root');
 
-const MovieSearchModal = ({
+const TVSearchModal = ({
   isOpen,
   onRequestClose,
   searchResults,
@@ -33,7 +33,7 @@ const MovieSearchModal = ({
       }
 
       if (filters.year) {
-        params.primary_release_year = filters.year;
+        params.first_air_date_year = filters.year;
       }
 
       if (filters.rating) {
@@ -44,10 +44,10 @@ const MovieSearchModal = ({
         params.sort_by = filters.sortBy;
       }
 
-      const data = await discoverMovies(params);
+      const data = await discoverTVShows(params);
       setFilteredResults(data.results || []);
     } catch (error) {
-      console.error('Error applying filters:', error);
+      console.error('Error applying TV filters:', error);
       setFilteredResults([]);
     } finally {
       setIsFiltering(false);
@@ -60,7 +60,7 @@ const MovieSearchModal = ({
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      contentLabel="Movie Search Results"
+      contentLabel="TV Search Results"
       className="modal-content"
       overlayClassName="modal-overlay"
     >
@@ -68,7 +68,7 @@ const MovieSearchModal = ({
         <div className="sticky top-0 bg-white dark:bg-gray-800 z-10 p-4 border-b">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-              Search Results
+              TV Search Results
             </h2>
             <button
               onClick={onRequestClose}
@@ -80,7 +80,7 @@ const MovieSearchModal = ({
 
           <SearchFilters
             onFiltersChange={handleFiltersChange}
-            type="movie"
+            type="tv"
           />
         </div>
 
@@ -89,17 +89,29 @@ const MovieSearchModal = ({
             <LoadingSkeleton type="card" count={8} />
           ) : displayResults.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {displayResults.map((movie) => (
+              {displayResults.map((show) => (
                 <Link
-                  key={movie.id}
-                  to={`/movies/${movie.id}`}
+                  key={show.id}
+                  to={`/tv/${show.id}`}
                   onClick={onRequestClose}
                 >
-                  <MovieCardResult
-                    title={movie.title}
-                    posterPath={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    releaseDate={movie.release_date}
-                  />
+                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow p-4">
+                    <div className="aspect-[2/3] overflow-hidden mb-3">
+                      <img
+                        src={`https://image.tmdb.org/t/p/w300${show.poster_path}` || '/placeholder.png'}
+                        alt={show.name}
+                        className="w-full h-full object-cover rounded"
+                        loading="lazy"
+                      />
+                    </div>
+                    <h3 className="font-medium text-gray-900 dark:text-white text-sm line-clamp-2 mb-2">
+                      {show.name}
+                    </h3>
+                    <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
+                      <span>{new Date(show.first_air_date).getFullYear()}</span>
+                      <span>⭐ {show.vote_average?.toFixed(1)}</span>
+                    </div>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -108,7 +120,7 @@ const MovieSearchModal = ({
               <p className="text-gray-500 dark:text-gray-400">
                 {filteredResults.length === 0 && searchResults.length === 0
                   ? 'No results found. Try adjusting your filters.'
-                  : 'No movies match your current filters.'}
+                  : 'No TV shows match your current filters.'}
               </p>
             </div>
           )}
@@ -118,4 +130,4 @@ const MovieSearchModal = ({
   );
 };
 
-export default MovieSearchModal;
+export default TVSearchModal;

@@ -32,7 +32,7 @@ const SideBar = () => {
             src="/undefined32.png"
           />
           <div className="absolute h-[34.88%] w-[31.86%] top-[32.56%] left-[36.28%] font-semibold inline-block">
-            Movies
+            <Link to={`/movies`} className="text-white hover:text-gray-200">Movies</Link>
           </div>
           <img
             className="absolute top-[28px] left-[42px] w-[25px] h-[25px] object-cover"
@@ -43,7 +43,7 @@ const SideBar = () => {
         <div className="absolute top-[364px] left-[42px] w-[142px] h-[30px] overflow-hidden">
           <div className="absolute top-[0px] left-[0px] w-[132px] h-[30px] overflow-hidden">
             <div className="absolute h-full w-[69.7%] top-[0%] left-[30.3%] font-semibold inline-block">
-              TV Series
+              <Link to={`/tv`} className="text-gray-600 hover:text-gray-800">TV Series</Link>
             </div>
             <img
               className="absolute top-[1px] left-[0px] w-[27px] h-[29px] object-cover"
