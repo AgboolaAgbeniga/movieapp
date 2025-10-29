@@ -134,6 +134,7 @@ const MovieDetails = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition-colors flex items-center justify-center space-x-2 w-full sm:w-auto"
+                  aria-label="Watch trailer on YouTube"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
@@ -141,7 +142,7 @@ const MovieDetails = () => {
                   <span>Watch Trailer</span>
                 </a>
               ) : (
-                <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition-colors flex items-center justify-center space-x-2 w-full sm:w-auto">
+                <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition-colors flex items-center justify-center space-x-2 w-full sm:w-auto" aria-label="Watch movie">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                   </svg>
@@ -196,7 +197,7 @@ const MovieDetails = () => {
       </div>
 
       {/* Content Section */}
-      <div className="relative z-10 bg-gray-900 pt-16">
+      <main className="relative z-10 bg-gray-900 pt-16" role="main">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           {/* Movie Details Card */}
    
@@ -264,7 +265,7 @@ const MovieDetails = () => {
             </div>
           </div>
         </div>
-      </div>
+      </main>
 
       {/* Footer */}
       <Footer />

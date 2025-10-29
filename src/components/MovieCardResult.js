@@ -1,23 +1,36 @@
-// MovieCard.js
+// MovieCardResult.js
 import React from 'react';
 
 const MovieCardResult = ({ title, posterPath, releaseDate }) => {
+    const formatDate = (dateString) => {
+        if (!dateString) return 'TBA';
+        try {
+            return new Date(dateString).getFullYear().toString();
+        } catch {
+            return 'TBA';
+        }
+    };
+
     return (
-        <div data-testid="" className="flex flex-col items-start justify-start gap-[12px] text-left text-xs text-gray-900 font-dm-sans">
-            <div className="relative w-[250px] h-[370px]">
+        <article className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" aria-label={title}>
+            <div className="aspect-[2/3] overflow-hidden">
                 <img
-                    className="absolute top-[0px] left-[0px] w-[250px] h-[370px] object-cover"
-                    alt=""
-                    data-testid="movie-poster"
-                    src={posterPath}
+                    className="w-full h-full object-cover"
+                    alt={title}
+                    src={posterPath || '/placeholder.png'}
+                    loading="lazy"
+                    decoding="async"
                 />
             </div>
-            <b data-testid="movie-release-date" className="relative text-gray-400">{releaseDate}</b>
-            <b data-testid="movie-title" className="relative text-lg inline-block w-[250px]">
-                {title}
-            </b>
-
-        </div>
+            <div className="p-3">
+                <h3 className="font-semibold text-gray-900 dark:text-white text-sm line-clamp-2 mb-1">
+                    {title}
+                </h3>
+                <p className="text-xs text-gray-600 dark:text-gray-400">
+                    {formatDate(releaseDate)}
+                </p>
+            </div>
+        </article>
     );
 };
 
